@@ -1,0 +1,15 @@
+//Interface definida via idl
+//idlj -fall Calculadora.idl  # Pode ser -fclient, -fserver
+
+module CalculadoraApp{
+    interface Calculadora{
+        
+        //Declaracao dos metodos da interface
+        double adicao(in double a , in double b);
+        double subtracao (in double a, in double b);
+        double multiplicacao (in double a, in double b);
+        double divisao (in double a, in double b);
+
+    };
+
+};
