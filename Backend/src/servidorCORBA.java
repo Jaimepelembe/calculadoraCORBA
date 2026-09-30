@@ -16,6 +16,8 @@ import org.omg.CosNaming.NamingContextExtHelper;
 import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAHelper;
 
+import java.util.Properties;
+
 /**
  * Primeiro temos que rodar o servidor de nomes
  * O servidorCORBA roda e regista o objecto no servidor de nome
@@ -28,8 +30,17 @@ public class servidorCORBA {
 
     public static void main(String[] args) {
         try{
+
+            //Propreidades
+            Properties props= new Properties();
+            // Define o IP ou Hostname do servidor CORBA
+            props.put("org.omg.CORBA.ORBInitialHost", "localhost"); 
+            // Define a porta (geralmente obrigatório em conjunto com o host)
+            props.put("org.omg.CORBA.ORBInitialPort", "1050"); 
+
             //Criar e inicializa o ORB
-            ORB orb = ORB.init(args,null);
+            ORB orb = ORB.init(args,props);
+            //ORB orb = ORB.init(args,null);
 
             //Obter o  RootPOA (Portable Object Adapter) e ativa o gerenciador POA
             POA rootpoa =POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
